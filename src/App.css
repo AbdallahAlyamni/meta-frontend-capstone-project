@@ -119,10 +119,6 @@ m-auto{
     align-items: center;
 
 }
-
-body{
-    /* margin: auto 5%; */
-}
 header {
     display: grid;
     grid-template: 1fr / 2fr 6fr;
@@ -289,6 +285,21 @@ footer ul li:first-child{
 
 footer>div {
     margin-right: 50px;
+}
+
+form {
+    padding: 4rem 0;
+    display: grid;
+    /* max-width: 200px; */
+    gap: 20px;
+    justify-content: center;
+}
+
+.booking-banner{
+    background-image: url('./assets/booking-banner.png');
+    background-position: center;
+    padding: 6rem 0;
+    text-align: center;
 }
 
 @media screen and (max-width: 600px) {
