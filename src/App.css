@@ -1,38 +1,345 @@
-.App {
-  text-align: center;
+:root {
+    /* Colors */
+    --primary-color-1: #485D56;
+    --primary-color-2: #F4CE14;
+    --secondary-color-1: #EE9972;
+    --secondary-color-2: #FBDABB;
+    --secondary-color-3: #EDEFEE;
+    --secondary-color-4: #333333;
+
+    /* Font Styles */
+    --display-title: 500 64px "Markazi Text", serif;
+    --sub-title: 400 40px "Markazi Text", serif;
+    --lead-text: 500 30px "Karla", serif;
+    --section-title: 800 20px "Karla", serif;
+    --section-categories: 800 16px "Karla", serif;
+    --card-title: 700 18px "Karla", serif;
+    --paragraph-text: 400 16px/1.5 "Karla", serif;
+    --highlight-text: 500 16px "Karla", serif;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.display-title{
+    font: var(--display-title);
+    line-height: 0.6;
+    margin: 0;
+}
+.sub-title{
+    font: var(--sub-title);
+    margin: 0;
+}
+.lead-text{
+    font: var(--lead-text);
+}
+.section-title{
+    font: var(--section-title);
+}
+.section-categories{
+    font: var(--section-categories);
+}
+.card-title{
+    font: var(--card-title);
+}
+.paragraph-text{
+    font: var(--paragraph-text);
+}
+.highlight-text{
+    font: var(--highlight-text);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.dish-card-title{
+    font: 500 24px "Markazi Text", serif;
+    margin: auto 0;
+}
+.dish-card-price{
+    font: 600 16px "Karla", serif;
+    color: var(--secondary-color-1);
+    margin: auto 0;
+}
+.dish-description{
+    font: 500 16px "Karla", serif;
+    color: var(--primary-color-1);
+}
+
+.dish-button{
+    font: 600 16px "Karla", serif;
+    color: var(--secondary-color-4);
+}
+
+.text-primary-1{
+    color: var(--primary-color-1);
+}
+.text-primary-2{
+    color: var(--primary-color-2);
+}
+.text-secondary-1{
+    color: var(--secondary-color-1);
+}
+.text-secondary-2{
+    color: var(--secondary-color-2);
+}
+.text-secondary-3{
+    color: var(--secondary-color-3);
+}
+.text-secondary-4{
+    color: var(--secondary-color-4);
+}
+.text-white{
+    color: #ffffff;
+}
+.text-black{
+    color: #000000;
+}
+
+button{
+    border: unset;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.button-primary {
+    padding: 15px 20px;
+    background: #F4CE14;
+    border-radius: 20px;
+    font: var(--card-title);
+    color: var(--secondary-color-4);
+
+}
+
+m-auto{
+    margin: auto;
+}
+
+.flex{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+body{
+    /* margin: auto 5%; */
+}
+header {
+    display: grid;
+    grid-template: 1fr / 2fr 6fr;
+    margin: auto 20%;
+    padding: 1rem;
+    place-items: center;
+}
+
+header img{
+    width: 100%;
+}
+
+nav{
+    width: 100%;
+}
+
+nav>ul {
+    display: grid;
+    grid-template: 1fr / repeat(6, auto);
+    list-style:none;
+    gap: 20px;
+    padding: unset;
+    text-align: center;
+}
+
+nav>ul li>a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+main section.banner{
+    padding: 6rem 20%;
+    background-color: var(--primary-color-1);
+    display: grid;
+    grid-template: 1fr / 4fr 4fr;
+}
+
+section.banner img {
+
+    width: 274px;
+    height: 414px;
+    border-radius: 38px;
+    margin: auto;
+
+}
+
+section.banner{
+    padding: 2rem 20%;
+}
+section.week-specials{
+    padding: 6rem 20%;
+    margin: auto;
+}
+section.week-specials > .section-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin: 2rem 0;
+}
+section.week-specials > .dishes {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
+}
+.dishes .dish-card {
+    background-color: #EDEFEE;
+    border-radius: 16px 16px 0 0;
+}
+
+.dish-card .card-body{
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+    padding: 10px 25px;
+}
+.dish-card .dish-title {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+.dish-card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 16px 16px 0 0;
+}
+
+section.testimonials{
+    padding: 8rem 20%;
+    background-color: var(--secondary-color-3);
+    margin: auto;
+}
+
+section.testimonials h1{
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.testimonials .cards{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+.testimonial-card{
+    padding: 10px;
+    border-radius: 16px;
+    background-color: var(--secondary-color-3);
+}
+.testimonial-person {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: 600 14px "Karla", serif;;
+}
+.testimonial-person img{
+    border-radius: 16px;
+}
+
+
+main section.about{
+    padding: 6rem 20%;
+    display: grid;
+    grid-template: 1fr / 4fr 4fr;
+}
+
+section.about img {
+
+    max-width: 250px;
+    width: 100%;
+    height: 350px;
+    border-radius: 38px;
+    margin: auto;
+
+}
+
+section.about>.flex>img:first-child {
+
+    position: relative;
+    top: 80px;
+    left: 80px;
+
+}
+
+footer {
+
+    padding: 6rem 20%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+footer ul{
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li{
+    font: 500 20px "Karla", serif;
+    margin-bottom: 20px;
+}
+footer ul li:first-child{
+    font: 900 20px "Karla", serif;
+    color: var(--primary-color-1);
+}
+
+footer>div {
+    margin-right: 50px;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        grid-template: auto / 1fr;
+    }
+    nav>ul {
+        display: grid;
+        grid-template: repeat(6, auto) / 1fr;
+        gap: 10px;
+    }
+    main section.banner{
+        grid-template: auto / 1fr;
+        gap: 20px;
+        text-align: center;
+    }
+    section.banner .banner-text{
+        display: flex;
+        flex-direction: column;
+    }
+
+    section.week-specials > .section-header {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: 2rem 0;
+        gap: 20px;
+    }
+
+    section.week-specials > .dishes {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .testimonials .cards{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    section.about{
+        grid-template: auto / 1fr !important;
+    }
+
+    footer {
+        padding: 6rem 20%;
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    footer>div {
+        place-self: center;
+        margin-right: 0;
+    }
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
