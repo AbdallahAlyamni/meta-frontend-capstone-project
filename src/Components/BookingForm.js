@@ -1,50 +1,50 @@
-import { useReducer, useState } from "react";
+import { useState } from "react";
+import styles from "./BookingForm.module.css";
 
-function BookingForm(props) {
-    const [resDate, setResDate] = useState('');
-    const [resTime, setResTime] = useState('');
-    const [guests, setGuests] = useState('');
-    const [occasion, setOccasion] = useState('');
+const occasions = ["Birthday", "Anniversary"];
 
-    const [availableTimesState, availableTimesDispatch] = useReducer(props.updateTimes, props.initializeTimes);
+const BookingForm = ({ availableTimes, submitData, dispatchOnChange }) => {
+  const { booking, bookingForm, formInput, bookingTitle } = styles;
 
-    const handleResTimeChange = (e) => {
-        setResTime(e.target.value);
-        availableTimesDispatch({type: 'update_available_times', value: e.target.value});
-    }
-    return (
-        <>
-            <div className="booking-banner">
-                <h1 className="display-title text-primary-2" >
-                    Book Now
-                </h1>
-            </div>
+  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const [guests, setGuests] = useState(1);
+  const [time, setTime] = useState(availableTimes[0]);
+  const [occasion, setOccasion] = useState(occasions[0]);
 
-            <form>
-                <label htmlFor="res-date">Choose date</label>
-                <input type="date" id="res-date" value={resDate} onChange={e => {setResDate(e.target.value)} }/>
+  const isFieldsValid = () => {
+    return date && time && guests && occasion
+  }
 
-                <label htmlFor="res-time">Choose time</label>
-                <select id="res-time " value={resTime} onChange={ handleResTimeChange }>
-                    {availableTimesState.map(availableTime => {
-                        return (
-                            <option key={availableTime} value={availableTime}>{availableTime}</option>
-                        );
-                    })}
-                </select>
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    submitData({ date, time, guests, occasion });
+  };
 
-                <label htmlFor="guests">Number of guests</label>
-                <input type="number" placeholder="1" min="1" max="10" id="guests" value={guests} onChange={e => {setGuests(e.target.value)} } />
+  const handleDateChange = (e) => {
+    setDate(e.target.value);
+    dispatchOnChange(e.target.value);
+  };
 
-                <label htmlFor="occasion">Occasion</label>
-                <select id="occasion" value={occasion} onChange={e => {setOccasion(e.target.value)} }>
-                    <option>Birthday</option>
-                    <option>Anniversary</option>
-                </select>
-
-                <input type="submit" value="Make Your reservation" />
-            </form>
-        </>
-    );
+  return (
+    <section className={booking} onSubmit={handleFormSubmit}>
+      <h1 className={bookingTitle}>Book Now!</h1>
+      <form className={bookingForm} style={styles} >
+        <label htmlFor="res-date">Choose date</label>
+        <input className={formInput} type="date" id="res-date" required value={date} onChange={handleDateChange} />
+        <label htmlFor="res-time">Choose time</label>
+        <select className={formInput} id="res-time" required value={time} onChange={(e) => setTime(e.target.value)}>
+          {availableTimes.map((element, index) => <option key={index}>{element}</option>)}
+        </select>
+        <label htmlFor="guests">Number of guests</label>
+        <input className={formInput} type="number" required placeholder="1" min="1" max="10" id="guests" value={guests} onChange={(e) => setGuests(e.target.value)} />
+        <label htmlFor="occasion">Occasion</label>
+        <select className={formInput} id="occasion" required value={occasion} onChange={(e) => setOccasion(e.target.value)}>
+          {occasions.map((element, index) => <option key={index}>{element}</option>)}
+        </select>
+        <button disabled={!isFieldsValid()} className={formInput} type="submit" >Make your reservation</button>
+      </form>
+    </section>
+  )
 }
-export default BookingForm;
+
+export default BookingForm
